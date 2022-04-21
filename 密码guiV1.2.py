@@ -153,7 +153,7 @@ class MY_GUI():
         print(haooo,pwddd)
         from selenium import webdriver
         from time import sleep
-        driver = webdriver.Firefox(executable_path="123.exe")
+        driver = webdriver.Firefox()
         driver.get("https://pass.cppu.net/tpass/login")
         driver.find_element_by_id("un").send_keys(haooo)
         driver.find_element_by_id("pd").send_keys(pwddd)
@@ -163,15 +163,11 @@ class MY_GUI():
         all_h = driver.window_handles
         driver.switch_to.window(all_h[1])
         sleep(2)
-        driver.get("http://i.chaoxing.com")
-        sleep(1)
-        driver.find_element_by_id("otherlogin").click()
-        sleep(1)
-        driver.find_element_by_id("inputunitname").send_keys("中国人民警察")
-        sleep(1)
-        driver.find_element_by_id("39012").click()
-        sleep(1)
-        driver.get("http://i.chaoxing.com")
+        try:
+            driver.find_element_by_id("app_a").click()
+        except:
+            driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/ul[1]/li[2]/div/compress:html/div[1]/div/div[2]/div/div/a[2]/span").click()
+            
 
     #获取当前时间
     def get_current_time(self):
